@@ -1,13 +1,14 @@
-let n = 5;
-let col = '*';
+let n = 8;
+let symbol = '*';
+let line = ''
 
 if (n > 1) {
-    for (index = 1; index < n; index += 1) {
-        col += '*';
+    for (index = 0; index < n; index += 1) {
+        line += symbol;
     }
 
     for (index1 = 1; index1 <= n; index1 += 1) {
-        console.log(col);
+        console.log(line);
     }
 
 } else {
