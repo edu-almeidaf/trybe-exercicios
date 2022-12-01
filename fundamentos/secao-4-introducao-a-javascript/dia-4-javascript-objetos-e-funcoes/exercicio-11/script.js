@@ -1,15 +1,15 @@
 function maiorIndice(arrayNumeros){
     let indice = 0;
 
-    for (index = 0; index < arrayNumeros.length; index += 1) {
-        for (index1 = 0; index1 < arrayNumeros.length; index1 += 1){
-            if (arrayNumeros[index1] > arrayNumeros[index]){
-                indice = index1;
-            }
+    for (index in arrayNumeros) {
+        
+        if (arrayNumeros[index] > arrayNumeros[indice]){
+            indice = index;
         }
+        
     }
 
     return indice;
 }
 
-console.log(maiorIndice([23, 3, 6, 7, 10, 1]));
+console.log(maiorIndice([23, 3, 60, 7, 10, 100]));
