@@ -12,4 +12,22 @@ const substituaX = nome => {
     return arrayFrase.join(' ');
 }
 
-console.log(substituaX('Eduardo '));
+
+
+const minhasSkills = func => {
+    const skills = ['Javascript', 'HTML', 'CSS'];
+
+    let resultado = `
+    ${func}
+    
+    Minhas três principais habilidades são:`;
+
+    for (let index = 0; index < skills.length; index += 1) {
+        resultado = `${resultado} - ${skills[index]}`;
+    }
+
+return resultado;
+
+}
+
+console.log(minhasSkills(substituaX('Eduardo')));
