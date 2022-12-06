@@ -23,7 +23,8 @@ const minhasSkills = func => {
     Minhas três principais habilidades são:`;
 
     for (let index = 0; index < skills.length; index += 1) {
-        resultado = `${resultado} - ${skills[index]}`;
+        resultado = `${resultado}
+        - ${skills[index]}`;
     }
 
 return resultado;
