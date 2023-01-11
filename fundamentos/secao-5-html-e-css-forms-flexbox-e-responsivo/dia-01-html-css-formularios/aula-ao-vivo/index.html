@@ -19,12 +19,86 @@
     <main class="main-content">
         <form action="" method="get">
             <div class="inputs">
-                <label for="resume">Resume/CV*</label>
-                <input type="file" name="resume" id="resume">
+                <label for="resume">Resume/CV: *</label>
+                <input type="file" name="resume" id="resume" required>
+            </div>
+
+            <div class="inputs">
+                <label for="full-name">Full name: *</label>
+                <input type="text" name="full-name" id="full-name" required>
+            </div>
+
+            <div class="inputs">
+                <label>Pronouns:</label>
+                <input type="radio" name="pronouns" id="he-him" value="he-him">
+                <label for="he-him">He/Him</label>
+
+                <input type="radio" name="pronouns" id="she-her" value="she-her">
+                <label for="she-her">She/Her</label>
+
+                <input type="radio" name="pronouns" id="they-them" value="they-them">
+                <label for="they-them">They/Them</label>
+            </div>
+
+            <div class="inputs">
+                <label for="email">Email: *</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <div class="inputs">
+                <label for="birth-date">Birth date: </label>
+                <input type="date" name="birth-date" id="birth-date">
+            </div>
+
+            <hr>
+
+            <h5>LINKS</h5>
+
+            <div class="inputs">
+                <label for="linkedin">LinkedIn:</label>
+                <input type="url" name="linkedin" id="linkedin">
+            </div>
+
+            <div class="inputs">
+                <label for="github">GitHub:</label>
+                <input type="url" name="github" id="github">
+            </div>
+
+            <hr>
+
+            <h5>ADDITIONAL INFORMATION</h5>
+
+            <div class="inputs">
+                <textarea name="cover-letter" id="cover-letter" cols="40" rows="8"></textarea>
+            </div>
+
+            <hr>
+
+            <div class="inputs">
+                <label for="location">What is your location?</label>
+                <select name="country" id="country">
+                    <option value="NULL">Select..</option>
+                    <option value="BR">Brazil</option>
+                    <option value="AR">Argentina</option>
+                    <option value="FR">France</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <div class="inputs">
+                <label for="consent">
+                    <input type="checkbox" name="consent" id="consent">
+                    Yes, Spotify can contact me about future job opportunities for up to 3 years
+                </label>
+            </div>
+
+
+            <div class="buttons">
+                <button type="submit" id="btn-submit">SUBMIT</button>
+                <button type="reset" id="btn-reset">RESET</button>
             </div>
         </form>
-        
-
     </main>
 
 </body>
