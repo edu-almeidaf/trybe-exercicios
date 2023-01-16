@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    background-color: white;
+    width: 100%;
+}
+
+header img {
+    width: 120px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 0 10px;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+a:visited, a:hover, a:active {
+    color: black;
+}
+
+nav, ul {
+    list-style: none;
+}
+
+.hero {
+    background-image: url(images/farao.png);
+    min-height: 100vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(70, 87, 103);
+    text-align: center;
+}
