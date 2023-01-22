@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu';
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #323333;
+  color: white;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  color: rgb(238, 238, 238);
+}
+
+header h3 {
+  font-size: 1.1rem;
+  color: rgb(194, 194, 194);
+  cursor: pointer;
+}
+
+header h3:hover {
+  color: #0fa36b;
+}
+
+.header-img {
+  width: 70px;
+}
+
+.text-section {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+  width: 100%;
+}
+
+p {
+  color: #232525;;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 90%;
+}
+
+.gallery {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px auto 13px auto;
+}
+
+.itens {
+   align-items: center;
+   background-color: rgb(241, 241, 241);
+   border-radius: 15px;
+   box-shadow: 2px 3px rgba(161, 161, 161, 0.5);
+   display: flex;
+   flex-direction: column;
+   height: 220px;
+   justify-content: center;
+   margin: 0 10px 15px 0;
+   width: 180px;
+}
+
+.gallery-img {
+  width: 150px;
+}
+
+hr {
+  margin-top: 10px;
+  width: 25%;
+}
+
+h4 {
+  color: #5c687c;
+  margin: 10px 0;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.social-img {
+  width: 25px;
+  margin-left: 10px;
+}

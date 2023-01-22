@@ -14,7 +14,7 @@ paragrafos[0].style.fontSize = '20px';
 
 // Recupere o subtítulo e altere a cor dele usando a função getElementsByTagName.
 
-const subTitulo = document.getElementsByClassName('sub-titulo');
+const subTitulo = document.getElementsByTagName('H4');
 subTitulo[0].style.fontSize = '25px';
 subTitulo[0].style.color = 'green';
 subTitulo[0].style.backgroundColor = 'yellow';

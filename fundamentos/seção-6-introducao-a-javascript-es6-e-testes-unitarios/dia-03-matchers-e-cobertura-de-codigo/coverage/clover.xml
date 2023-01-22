@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1674312771998" clover="3.2.0">
+  <project timestamp="1674312771998" name="All files">
+    <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1" elements="20" coveredelements="20" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
+    <file name="dados.js" path="/home/eduardo/Documentos/trybe-exercicios/fundamentos/seção-6-introducao-a-javascript-es6-e-testes-unitarios/dia-03-matchers-e-cobertura-de-codigo/exercicio-03/dados.js">
+      <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="42" count="1" type="stmt"/>
+      <line num="43" count="7" type="stmt"/>
+      <line num="45" count="7" type="stmt"/>
+      <line num="46" count="42" type="stmt"/>
+      <line num="48" count="42" type="cond" truecount="2" falsecount="0"/>
+      <line num="49" count="4" type="stmt"/>
+      <line num="53" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="54" count="3" type="stmt"/>
+      <line num="57" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="58" count="1" type="stmt"/>
+      <line num="61" count="3" type="stmt"/>
+      <line num="64" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
