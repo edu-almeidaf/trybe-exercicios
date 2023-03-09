@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
+.red {
+  background-color: red;
+  color: white;
+}
