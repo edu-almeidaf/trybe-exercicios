@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import FilmsContext from "../context/FilmsContext";
+import { FilmsContext } from "../context/FilmsProvider";
 import Header from "../components/Header";
 import FilmCard from "../components/FilmCard";
 

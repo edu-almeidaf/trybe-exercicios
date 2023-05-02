@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import PropTypes from 'prop-types';
-import FilmsContext from "../context/FilmsContext";
+import { FilmsContext } from "../context/FilmsProvider";
 
 function FilmCard({ film, isFavorite }) {
   const { toggleFavorite } = useContext(FilmsContext);
