@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    image: nginx:latest
+    volumes:
+      - ./public_html:/usr/share/nginx/html
+    ports:
+      - 8081:80
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: mysql:8.0.32
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3307:3306
+    volumes:
+      -./db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+    
