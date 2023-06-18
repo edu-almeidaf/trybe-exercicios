@@ -61,7 +61,7 @@ app.delete('/teams/:id', (req, res) => {
 
   if (arrayPosition === -1) {
     res.status(404).json({ message: 'Team not found' });
-  };
+  }
 
   teams.splice(arrayPosition, 1);
 
