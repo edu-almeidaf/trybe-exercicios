@@ -1,8 +1,5 @@
-const { readMissionsData } = require('./utils/fsUtils.js')
+const { readMissionsData, writeMissionsData } = require('./utils/fsUtils.js')
 
-async function main() {
-  const missions = await readMissionsData()
-  console.log(missions)
-}
+async function main() {}
 
 main()
