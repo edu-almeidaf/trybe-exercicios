@@ -28,26 +28,29 @@ const referenceTable = {
 }
 
 const rankIMC = (IMC) => {
+  // Transforma as chaves do objeto referenceTable num array
   const reference = Object.keys(referenceTable);
-  const referenceResult = reference.find((status) => {
+
+  // Roda uma hof para verificar em qual faixa de peso o IMC se encaixa 
+  return reference.find((status) => {
     const { min, max } = referenceTable[status];
     return IMC >= min && IMC <= max;
   })
-
-  return referenceResult;
 }
 
 const findIMC = (height, weight) => {
-  const heightInM = height / 100;
 
+  // Aqui calcula o IMC
+  const heightInM = height / 100;
   const IMC = weight / (heightInM ** 2);
 
+  // A variável referenceResult recebe o retorno da função rankIMC
   const referenceResult = rankIMC(IMC);
 
   return {
     IMC: IMC.toFixed(2),
-    referenceResult: referenceResult,
-    referenceRange: referenceTable[referenceResult],
+    referenceResult,
+    // referenceRange: referenceTable[referenceResult],
   };
 }
 
@@ -58,4 +61,4 @@ const { IMC, referenceRange, referenceResult } = findIMC(heightInCm, weightInKg)
 
 console.log(`Seu IMC atual é ${IMC}`);
 console.log(`Referência: ${referenceResult}`);
-console.log(`Seu IMC ideal é entre ${referenceRange.min} e ${referenceRange.max}`);
+// console.log(`Seu IMC ideal é entre ${referenceRange.min} e ${referenceRange.max}`);

@@ -1,5 +1,15 @@
 const readlineSync = require('readline-sync');
 
+const handleFibonacciReq = (number) => {
+  if (number === 1 || number === 2) {
+    return 1;
+  }
+  
+  const result = handleFibonacciReq(number - 1) + handleFibonacciReq(number - 2);
+  console.log(result);
+  return result;
+}
+
 function handleFibonacci(quantity) {
   let valorA = 0;
   let valorB = 1;
