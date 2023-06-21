@@ -1,3 +1,14 @@
+require('dotenv').config()
 const app = require('./app')
 
-app.listen(3001, () => console.log('Servidor rodando na porta 3001'))
+const connection = require('./db/connection')
+
+app.listen(3001, async () => {
+  console.log('Servidor rodando na porta 3001')
+
+  const [result] = await connection.execute('SELECT 1')
+
+  if (result) {
+    console.log('MySQL Connection OK!')
+  }
+})

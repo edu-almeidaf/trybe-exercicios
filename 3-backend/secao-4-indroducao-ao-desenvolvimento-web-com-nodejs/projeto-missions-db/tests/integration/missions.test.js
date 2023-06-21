@@ -3,12 +3,12 @@ const chai = require('chai')
 const chaiHttp = require('chai-http')
 const app = require('../../src/app')
 const sinon = require('sinon')
-const fs = require('fs')
+const connection = require('../../src/db/connection')
 
 chai.use(chaiHttp)
 const { expect } = chai
 
-const mockMissions = JSON.stringify([
+const mockMissions = [
   {
     id: 1,
     name: 'Mariner 2',
@@ -30,12 +30,12 @@ const mockMissions = JSON.stringify([
     country: 'Estados Unidos',
     destination: 'Vênus',
   },
-])
+]
 
 describe('Rota de missões', function () {
   describe('GET /missions', function () {
     it('Retorna uma lista de missões', async function () {
-      sinon.stub(fs.promises, 'readFile').resolves(mockMissions)
+      sinon.stub(connection, 'execute').resolves([mockMissions])
       const response = await chai.request(app).get('/missions')
 
       expect(response.status).to.be.equal(200)
@@ -47,18 +47,22 @@ describe('Rota de missões', function () {
   })
 
   describe('POST /missions', function () {
-    beforeEach(function () {
-      sinon.stub(fs.promises, 'writeFile').resolves()
-    })
-
-    afterEach(sinon.restore)
-
     const mockMission = {
       name: 'Eduardo',
       year: '2022',
       country: 'Brasil',
       destination: 'Marte',
     }
+    const mockId = 10
+
+    beforeEach(function () {
+      sinon.stub(connection, 'execute')
+      .onFirstCall().resolves([{ insertId: mockId }])
+      .onSecondCall().resolves([{ id: mockId, ...mockMission }])
+    })
+
+    afterEach(sinon.restore)
+
     it('Retorna a missão criada com um id', async function () {
       const response = await chai
         .request(app)
@@ -76,10 +80,10 @@ describe('Rota de missões', function () {
       )
     })
 
-    it('Escreve a nova missão no arquivo de missões', async function () {
+    it('Escreve a nova missão no banco de dados', async function () {
       await chai.request(app).post('/missions').send(mockMission)
 
-      expect(fs.promises.writeFile.called).to.be.equal(true)
+      expect(connection.execute.calledTwice).to.be.equal(true)
     })
   })
 })

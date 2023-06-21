@@ -1,11 +1,8 @@
 const express = require('express')
-const {
-  readMissionsData,
-  writeMissionsData,
-  updateMissionData,
-  deleteMissionData,
-} = require('./utils/fsUtils')
+const { updateMissionData, deleteMissionData } = require('./utils/fsUtils')
 require('express-async-errors')
+
+const { findAll, insert } = require('./db/missionsDB')
 
 const app = express()
 app.use(express.json())
@@ -39,14 +36,14 @@ const validateMissionData = (req, res, next) => {
 // ----
 
 app.get('/missions', async (req, res) => {
-  const missions = await readMissionsData()
+  const missions = await findAll()
   return res.status(200).json({ missions })
 })
 
 app.post('/missions', validateMissionData, async (req, res) => {
   const newMission = req.body
 
-  const newMissionWithId = await writeMissionsData(newMission)
+  const newMissionWithId = await insert(newMission)
 
   return res.status(201).json({ mission: newMissionWithId })
 })
