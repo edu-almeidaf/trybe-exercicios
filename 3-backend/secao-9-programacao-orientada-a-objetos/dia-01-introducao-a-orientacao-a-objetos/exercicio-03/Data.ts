@@ -16,31 +16,31 @@ class Data {
     }
   }
 
-  get day(): number {
+  public get day(): number {
     return this._day;
   }
 
-  set day(value: number) {
+  public set day(value: number) {
     this._day = value;
   }
 
-  get month(): number {
+  public get month(): number {
     return this._month;
   }
 
-  set month(value: number) {
+  public set month(value: number) {
     this._month = value;
   }
 
-  get year(): number {
+  public get year(): number {
     return this._year;
   }
 
-  set year(value: number) {
+  public set year(value: number) {
     this._year = value;
   }
 
-  getMonthName(): string {
+  public getMonthName(): string {
     const months = [
       'janeiro',
       'fevereiro',
@@ -59,11 +59,11 @@ class Data {
     return months[this._month - 1];
   }
 
-  isLeapYear(): boolean {
+  public isLeapYear(): boolean {
     return this._year % 4 === 0;
   }
 
-  compare(date: Data): number {
+  public compare(date: Data): number {
     const currentDateStr = `${this.year}-${this.month}-${this.day}`;
     const dateStr = `${date.year}-${date.month}-${date.day}`;
 
@@ -73,7 +73,7 @@ class Data {
     return 0;
   }
 
-  format(formatting: string): string {
+  public format(formatting: string): string {
     const conditions: boolean[] = [
       (!formatting.match(/a{2,4}/g)),
       (!formatting.match(/m{2}/g) && !formatting.match(/M{1}/g)),
@@ -99,10 +99,9 @@ class Data {
     return dateFormatting;
   }
 
-  private static validateDate(day: number, month: number, year: number)
-    : boolean {
+  private static validateDate(day: number, month: number, year: number): boolean {
     const dateStr = `${year}-${month}-${day}`;
-
+    
     if (new Date(dateStr).getDate() !== day) return false;
 
     return true;
