@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import PlantController from '../controllers/PlantController';
-import PlantModel from '../models/PlantModel';
+// import PlantModel from '../models/PlantModel';
+import Mysql2PlantModel from '../models/Mysql2PlantModel';
 import PlantService from '../services/PlantService';
 
-const plantModel = new PlantModel();
+const plantModel = new Mysql2PlantModel();
 const plantService = new PlantService(plantModel);
 const plantController = new PlantController(plantService);
 
