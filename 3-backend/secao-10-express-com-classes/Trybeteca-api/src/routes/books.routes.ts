@@ -28,4 +28,15 @@ router.delete(
   (req: Request, res: Response) => bookController.deleteBook(req, res),
 );
 
+router.get(
+  '/author/search',
+  (req: Request, res: Response) => bookController.getBookByQuery(req, res),
+);
+
+router.patch(
+  '/:id/discount',
+  Validations.validateToken,
+  (req: Request, res: Response) => bookController.discountBook(req, res),
+);
+
 export default router;

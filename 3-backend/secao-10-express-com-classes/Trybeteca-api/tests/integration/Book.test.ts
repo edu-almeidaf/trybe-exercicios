@@ -8,6 +8,7 @@ import App from '../../src/App';
 import SequelizeBook from '../../src/database/models/SequelizeBook';
 import { books, book } from '../mocks/Book.mocks';
 import Validations from '../../src/middlewares/Validations';
+import JWT from '../../src/utils/JWT';
 
 chai.use(chaiHttp);
 
@@ -120,6 +121,57 @@ describe('Books Test', function() {
 
     expect(status).to.equal(404);
     expect(body.message).to.equal('Book 1 not found');
+  });
+
+  it('should change a book price', async function() {
+    sinon.stub(SequelizeBook, 'update').resolves([1] as any);
+    sinon.stub(SequelizeBook, 'findByPk').resolves(book as any);
+    sinon.stub(JWT, 'verify').resolves();
+
+    const { status, body } = await chai
+      .request(app)
+      .patch('/books/1/discount')
+      .set('authorization', 'validToken')
+      .send({ discount: '5' });
+
+    expect(status).to.equal(200);
+    expect(body.message).to.equal('Book updated');
+  });
+
+  it('should return not found when the book to discount does not exists', async function() {
+    sinon.stub(SequelizeBook, 'findByPk').resolves(null);
+    sinon.stub(JWT, 'verify').resolves();
+
+    const { status, body } = await chai
+      .request(app)
+      .patch('/books/1/discount')
+      .set('authorization', 'validToken')
+      .send({ discount: '5' });
+
+    expect(status).to.equal(404);
+    expect(body.message).to.equal('Book 1 not found');
+  });
+
+  it('should return a book by author', async function() {
+    sinon.stub(SequelizeBook, 'findAll').resolves(books as any);
+
+    const { status, body } = await chai
+      .request(app)
+      .get('/books/author/search?q=Author');
+
+    expect(status).to.equal(200);
+    expect(body).to.deep.equal(books);
+  });
+
+  it('should return not found when there is no books by author', async function() {
+    sinon.stub(SequelizeBook, 'findAll').resolves([] as any);
+
+    const { status, body } = await chai
+      .request(app)
+      .get('/books/author/search?q=Jon');
+
+    expect(status).to.equal(404);
+    expect(body.message).to.equal('Author Jon not found');
   });
 
   afterEach(sinon.restore);

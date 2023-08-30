@@ -44,4 +44,23 @@ export default class BookService {
     await this.bookModel.delete(id);
     return { status: 'SUCCESSFUL', data: { message: 'Book deleted' } };
   }
+
+  public async getBookByQuery(q: string): Promise<ServiceResponse<IBook[] | ServiceMessage>> {
+    const book = await this.bookModel.findByQuery(q);
+    if (book && book.length === 0) {
+      return { status: 'NOT_FOUND', data: { message: `Author ${q} not found` } };
+    }
+
+    return { status: 'SUCCESSFUL', data: book };
+  }
+
+  public async discountBook(id: number, discount: number):
+  Promise<ServiceResponse<ServiceMessage>> {
+    const book = await this.bookModel.findById(id);
+    if (!book) return { status: 'NOT_FOUND', data: { message: `Book ${id} not found` } };
+
+    const newPrice = book.price - (book.price * (discount / 100));
+    await this.bookModel.update(id, { price: newPrice });
+    return { status: 'SUCCESSFUL', data: { message: 'Book updated' } };
+  }
 }
